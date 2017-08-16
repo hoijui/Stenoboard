@@ -68,8 +68,40 @@ dustCoverGap = 0.8;
 
 
 
-// MODULE CALLS
+// MAIN MODULE CALLS
 
+// Required for one full Stenoboard build:
+// (Render and export to STL separately)
+//base(isRight = true);  // * 1
+//base(isRight = false); // * 1
+//consonantsKeyboard();  // * 2
+//vowelsKeyboard();      // * 2
+//barKeyboard();         // * 2
+//barButtonContact();    // * 2
+// With 0.15mm accurracy, this takes about 20h in total to print
+// on a "Creality 3D CR10" 3D printer.
+
+
+
+// TESTING MODULE CALLS
+
+// These show up fine in the preview
+base();
+//base(isRight = false);
+//cover();
+//dustCover();
+//barButtonContact();
+
+// These are too complex to show up ok in the preview, but will/should render fine on a full render run.
+//barKeyboard();
+//vowelsKeyboard();
+//consonantsKeyboard();
+//projection(cut=true) translate([0, 0, -3.0]) consonantsKeyboard();
+//bottomRowKeysAssembly3();
+//topRowKeysAssembly();
+//numberBarAssembly();
+//bottomRowKeyAssembly();
+//topRowKeyAssembly();
 
 //translate([-46, 35, 0]) consonantsKeyboard(keys = 6, numberKeyIndex = 3, rightWideKeyIndex = 0, leftWideKeyIndex = 5, drawTopRow = true, drawBottomRow = true, drawFrame = true);
 //color("gray") 
@@ -83,7 +115,7 @@ dustCoverGap = 0.8;
 //translate([-45.73, 50, 0]) base(isRight = false);
 //translate([0, 0, rightVowelsScrewH + screwFrameVerticalOffset + 0.2])
 //translate([-14.5, 75, 0]) 
-translate([-14.5, 24, 0]) vowelsKeyboard();
+//translate([-14.5, 24, 0]) vowelsKeyboard();
 //translate([-45.73, 50, 0]) cover();
 //rightAssembly(drawConsonants = true, drawNumbers = true);
 
