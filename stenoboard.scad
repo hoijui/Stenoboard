@@ -67,17 +67,36 @@ dustCoverGap = 0.8;
 %translate(frameScrewPositions[3]) cylinder(r=1,h=50,$fn=6);
 
 
+RENDER_BASE_RIGHT = false;
+RENDER_BASE_LEFT = false;
+RENDER_CONSONANTS = false;
+RENDER_VOWELS = false;
+RENDER_NUMBER = false;
+RENDER_CONTACT = false;
+
 
 // MAIN MODULE CALLS
 
 // Required for one full Stenoboard build:
 // (Render and export to STL separately)
-//base(isRight = true);  // * 1
-//base(isRight = false); // * 1
-//consonantsKeyboard();  // * 2
-//vowelsKeyboard();      // * 2
-//barKeyboard();         // * 2
-//barButtonContact();    // * 2
+if (RENDER_BASE_RIGHT) {
+	base(isRight = true);  // * 1
+}
+if (RENDER_BASE_LEFT) {
+	base(isRight = false); // * 1
+}
+if (RENDER_CONSONANTS) {
+	consonantsKeyboard();  // * 2
+}
+if (RENDER_VOWELS) {
+	vowelsKeyboard();      // * 2
+}
+if (RENDER_NUMBER) {
+	barKeyboard();         // * 2
+}
+if (RENDER_CONTACT) {
+	barButtonContact();    // * 2
+}
 // With 0.15mm accurracy, this takes about 20h in total to print
 // on a "Creality 3D CR10" 3D printer.
 
@@ -86,7 +105,7 @@ dustCoverGap = 0.8;
 // TESTING MODULE CALLS
 
 // These show up fine in the preview
-base();
+//base();
 //base(isRight = false);
 //cover();
 //dustCover();
