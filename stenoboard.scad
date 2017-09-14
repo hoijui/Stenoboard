@@ -218,7 +218,7 @@ module bottomRowKeySurface(keyW = 13, keyD = 25, keyH = 1.25, isRightWideKey = f
   }
 }
 
-module numberBarSurface(keyW = 13, keyD = 25, keyH = 1.25, drawDifference = true, keys = 5, drawDifference = true) {
+module numberBarSurface(keyW = 13, keyD = 7.5, keyH = 2, drawDifference = true, keys = 6, drawDifference = true) {
   rotate([0, 0, 180]) difference() {
     translate([-keyW / 2 - hKeyDistance * (keys - 1) - 1.2, -keyD / 2, 0]) advancedBeveledCube([keyW + hKeyDistance * (keys - 1) + 2.4, keyD, keyH], topBevels = [drawKeySurfaceTopBevel ? true : false, drawKeySurfaceTopBevel ? true : false, drawKeySurfaceTopBevel ? true : false, drawKeySurfaceTopBevel ? true : false], scaleTopBevel = scaleKeyTopBevel);
     if(drawKeySurfaceDifference && drawDifference) {
@@ -245,7 +245,7 @@ module bottomRowKeyAssembly(pivotLength = 16.5, pivotHeight = 5, pivotDepth = 3.
   }
 }
 
-module numberBarAssembly(pivotLength = 16.5, pivotHeight = 5, pivotDepth = 3.25, coneR1 = 2.5, coneH = 3, tolerancePerSide = 0.25, armWidth = 3.5, armLength = 40, topKeyW = 13, keyD = 7.5, topKeyH = 2, keySupportH = 0, verticalKeySupportH = 0.4, backlash = 0.0, keys = 5, numberKeyIndex = 2) {
+module numberBarAssembly(pivotLength = 16.5, pivotHeight = 5, pivotDepth = 3.25, coneR1 = 2.5, coneH = 3, tolerancePerSide = 0.25, armWidth = 3.5, armLength = 40, topKeyW = 13, keyD = 7.5, topKeyH = 2, keySupportH = 0, verticalKeySupportH = 0.4, backlash = 0.0, keys = 6, numberKeyIndex = 3) {
  armHeight = 1 + 2 * 0.25;
  translate([-0.1,0.01,0]) union() {
   translate([-9.14 + numberKeyIndex * hKeyDistance, 0, 0]) carvedArm(armL = armLength, armW = 3.5, levelH = 1.6, firstLevelH = 0.4, levelTranslateIncrement = 2, levels = 2, drawFakeKey = false);
@@ -308,7 +308,7 @@ module frame(keys = 6, differenceH = -1, holeIncrease = [-0.8 , 0], frameH = 2, 
   }
 }
 
-module consonantsKeyboard(keys = 5, numberKeyIndex = 2, rightWideKeyIndex = 0, leftWideKeyIndex = 4, drawTopRow = true, drawBottomRow = true, drawFrame = true, frameH = 4, keyH = 5.2, cutTopFrame = 2) {
+module consonantsKeyboard(keys = 6, numberKeyIndex = 3, rightWideKeyIndex = 0, leftWideKeyIndex = 4, drawTopRow = true, drawBottomRow = true, drawFrame = true, frameH = 4, keyH = 5.2, cutTopFrame = 2) {
   union() {
     if (drawTopRow) topRowKeysAssembly(keys = keys, rightWideKeyIndex = rightWideKeyIndex, leftWideKeyIndex = leftWideKeyIndex, keyH = keyH);
     if (drawBottomRow) translate([0, -10, 0]) bottomRowKeysAssembly3(keys = keys, rightWideKeyIndex = rightWideKeyIndex, leftWideKeyIndex = leftWideKeyIndex, keyH = keyH);
