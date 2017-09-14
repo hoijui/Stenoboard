@@ -231,7 +231,6 @@ module topRowKeyAssembly(pivotLength = 16.5, pivotHeight = 5, pivotDepth = 3.25,
   translate([0,1,0]) carvedArm(armL = armLength - 3, armW = armWidth, levelH = 0.4, firstLevelH = 0.6, levelTranslateIncrement = 2.5, levels = 2, drawFakeKey = false);
   armHeight = 1 + 2 * 0.25;
   translate([0, -armLength + topKeyD / 2 - 0.5, verticalKeySupportH + keySupportH]) topRowKeySurface(keyW = topKeyW, keyD = topKeyD, keyH = topKeyH, isRightWideKey = isRightWideKey, isLeftWideKey = isLeftWideKey, isNearNumberSwitchKey = isNearNumberSwitchKey);
-  echo("top row h:", verticalKeySupportH + keySupportH + topKeyH);
 }
 
 module bottomRowKeyAssembly(pivotLength = 16.5, pivotHeight = 5, pivotDepth = 3.25, coneR1 = 2.5, coneH = 3, tolerancePerSide = 0.25, armWidth = 12, topArmLength = 35, armLength = 20, keyW = 15.2, keyD = 21.75, keyH = 2, topKeyD = 25, keySupportH = 0, verticalKeySupportH = 0, armsGap = 1, bridgeGap = 2, isRightWideKey = false, isLeftWideKey = false) {
@@ -244,7 +243,6 @@ module bottomRowKeyAssembly(pivotLength = 16.5, pivotHeight = 5, pivotDepth = 3.
     if (!isRightWideKey) for (i = [0, -1]) mirror([i, 0, 0]) translate([-keyW / 2 + (isLeftWideKey && i == 0 ? - 3.7 : 0), 5 - topArmLength - keyD - 1.75, armHeight]) bevel(r = keyW / 2, segments = 24);
     else for (i = [0, -1]) mirror([i, 0, 0]) translate([-keyW / 2 + (isRightWideKey && i == 0 ? 0 : -3.7), 5 - topArmLength - keyD - 1.75, armHeight]) bevel(r = keyW / 2, segments = 24);
   }
-  echo("bottom row h:", verticalKeySupportH + keySupportH + keyH);
 }
 
 module numberBarAssembly(pivotLength = 16.5, pivotHeight = 5, pivotDepth = 3.25, coneR1 = 2.5, coneH = 3, tolerancePerSide = 0.25, armWidth = 3.5, armLength = 40, topKeyW = 13, keyD = 7.5, topKeyH = 2, keySupportH = 0, verticalKeySupportH = 0.4, backlash = 0.0, keys = 5, numberKeyIndex = 2) {
@@ -269,7 +267,6 @@ module numberBarAssembly(pivotLength = 16.5, pivotHeight = 5, pivotDepth = 3.25,
   translate([10.6 + dustCoverGap + 4 * hKeyDistance + 0.2, -5.35 - 0.4 + dustCoverGap, 0]) cube([11.6 - dustCoverGap * 2, 8, 0.6]);
 
   translate([0, -9.5, 0]) numberBarSurface(keyW = topKeyW, keyD = keyD, keyH = topKeyH, keys = keys);
-  echo("bar h:", keySupportH + topKeyH);
  }
 }
 
