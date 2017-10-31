@@ -81,24 +81,23 @@ RENDER_CONTACT = false;
 // (Render and export to STL separately)
 if (RENDER_BASE_RIGHT) {
 	base(isRight = true);  // * 1
-}
-if (RENDER_BASE_LEFT) {
+} else if (RENDER_BASE_LEFT) {
 	base(isRight = false); // * 1
-}
-if (RENDER_CONSONANTS) {
+} else if (RENDER_CONSONANTS) {
 	consonantsKeyboard();  // * 2
-}
-if (RENDER_VOWELS) {
+} else if (RENDER_VOWELS) {
 	vowelsKeyboard();      // * 2
-}
-if (RENDER_NUMBER) {
+} else if (RENDER_NUMBER) {
 	barKeyboard();         // * 2
-}
-if (RENDER_CONTACT) {
+} else if (RENDER_CONTACT) {
 	barButtonContact();    // * 2
+} else {
+  // just show this by default
+  base(isRight = true);
+  //frame();
 }
-// With 0.15mm accurracy, this takes about 20h in total to print
-// on a "Creality 3D CR10" 3D printer.
+// Rendering:  ~1h (on a moderatly modern PC, top notch around 2011)
+// Printing:  ~20h (using 0.15mm accurracy, on a "Creality 3D CR10" 3D printer)
 
 
 
@@ -303,7 +302,7 @@ module fakeKey(armL, armW) {
 
 module frame(keys = 6, differenceH = -1, holeIncrease = [-0.8 , 0], frameH = 2, cutTopFrame = 2, cutBottomFrame = 0, topBevelsTopFrame = [false, false, false, false]) {
   difference() {
-    advancedBeveledCube([17 + hKeyDistance * keys, 79, frameH], center = false, bevelR = 8, bevelSegments = 20, topBevelR = 2, topBevelSegments = 16, topBevels = topBevelsTopFrame);
+    advancedBeveledCube([17 + hKeyDistance * keys + 50, 79 + 50, frameH], center = false, bevelR = 8, bevelSegments = 20, topBevelR = 2, topBevelSegments = 16, topBevels = topBevelsTopFrame);
     translate([8.94 - holeIncrease[0] / 2, 5, differenceH]) beveledCube([-1 + hKeyDistance * keys + holeIncrease[0], 64 + holeIncrease[1], frameH * 2], center = false);
     if (cutTopFrame > 0) translate([-1,65,frameH - cutTopFrame]) cube([150,100,100]);
     else if (cutBottomFrame > 0) translate([-1,65+0.5,10]) rotate([180, 0, 0]) cube([150,100,100]);
